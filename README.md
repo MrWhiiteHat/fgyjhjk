@@ -89,6 +89,23 @@ Visit `http://localhost:3000` to access the dashboard.
 
 ---
 
+## 🛠️ Automation Scripts
+
+For convenience, use the following scripts to manage the project:
+
+- **`start.ps1`**: Automatically sets up the environment (Python venv, npm install) and launches both services.
+- **`stop.ps1`**: Instantly stops both the backend and frontend by clearing their respective ports (8000 & 3000).
+
+```powershell
+# Run the start script
+.\start.ps1
+
+# Run the stop script
+.\stop.ps1
+```
+
+---
+
 ## 🧪 Explainability (Grad-CAM)
 
 Understanding the "Black Box" is critical for trust. Our platform provides heatmaps that visualize the attention of the neural network.
