@@ -1,0 +1,18 @@
+currency: USD
+period: monthly
+
+thresholds:
+  warning_percent: 80
+  critical_percent: 95
+
+budgets:
+  inference_compute_usd: 800
+  gpu_runtime_usd: 500
+  storage_usd: 200
+  egress_usd: 150
+
+cost_rates:
+  cpu_second_usd: 0.00005
+  gpu_second_usd: 0.00120
+  storage_gb_month_usd: 0.023
+  egress_gb_usd: 0.090

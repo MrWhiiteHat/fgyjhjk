@@ -1,0 +1,46 @@
+{
+  "title": "RealFake API Performance",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "15s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "P95 and P99 Latency",
+      "targets": [
+        {
+          "expr": "app_p95_latency",
+          "legendFormat": "P95"
+        },
+        {
+          "expr": "app_p99_latency",
+          "legendFormat": "P99"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Upload Throughput (Bytes)",
+      "targets": [
+        {
+          "expr": "rate(app_upload_bytes_total[5m])",
+          "legendFormat": "bytes/s"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Endpoint Request Volume",
+      "targets": [
+        {
+          "expr": "sum by (endpoint) (rate(app_request_count_total[1m]))",
+          "legendFormat": "{{endpoint}}"
+        }
+      ]
+    }
+  ]
+}

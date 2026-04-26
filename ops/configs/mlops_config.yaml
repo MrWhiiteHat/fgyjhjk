@@ -1,0 +1,35 @@
+environment: production
+service_name: realfake-face-detection
+service_version: 1.0.0
+model_name: real_fake_baseline
+active_model_version: 1.0.0
+
+model_registry_path: ops/mlops/state/model_registry.json
+artifact_store_path: ops/mlops/state/artifacts
+model_validation_required: true
+promotion_requires_approval: true
+rollback_enabled: true
+
+minimum_validation_metrics:
+  f1_score: 0.80
+  roc_auc: 0.85
+  accuracy: 0.82
+
+required_report_files:
+  - final_experiment_report.json
+  - validation_checklist.json
+
+inference_smoke_test:
+  enabled: true
+  sample_input: dataset/preprocessed/test/fake/custom_custom_fake_fake_1_f000000.jpg
+
+deployment_history_path: ops/mlops/state/deployment_history.jsonl
+promotion_history_path: ops/mlops/state/promotion_history.jsonl
+
+staging_deploy_enabled: true
+production_deploy_enabled: true
+
+alert_channels:
+  - type: email
+    target: mlops-oncall@example.com
+    severity_min: warning

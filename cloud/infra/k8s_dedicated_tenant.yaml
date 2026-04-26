@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: realfake-tenant-dedicated
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-backend-dedicated
+  namespace: realfake-tenant-dedicated
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloud-backend-dedicated
+  template:
+    metadata:
+      labels:
+        app: cloud-backend-dedicated
+    spec:
+      containers:
+        - name: backend
+          image: realfake/backend:cloud
+          ports:
+            - containerPort: 8000
+          env:
+            - name: CLOUD_STORAGE_ROOT
+              value: /data/tenant/storage
+            - name: CLOUD_JOB_POLL_INTERVAL_SECONDS
+              value: "0.2"

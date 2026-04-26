@@ -1,0 +1,21 @@
+FROM node:20-alpine AS deps
+WORKDIR /workspace/app/frontend
+COPY app/frontend/package.json app/frontend/package-lock.json* ./
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+FROM node:20-alpine AS builder
+WORKDIR /workspace
+COPY --from=deps /workspace/app/frontend/node_modules /workspace/app/frontend/node_modules
+COPY app/frontend /workspace/app/frontend
+WORKDIR /workspace/app/frontend
+RUN npm run build
+
+FROM node:20-alpine AS runner
+ENV NODE_ENV=production
+WORKDIR /workspace/app/frontend
+COPY --from=builder /workspace/app/frontend/.next ./.next
+COPY --from=builder /workspace/app/frontend/public ./public
+COPY --from=builder /workspace/app/frontend/package.json ./package.json
+COPY --from=builder /workspace/app/frontend/node_modules ./node_modules
+EXPOSE 3000
+CMD ["npm", "run", "start"]

@@ -1,0 +1,46 @@
+{
+  "title": "RealFake System Overview",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Requests per Second",
+      "targets": [
+        {
+          "expr": "rate(app_request_count_total[1m])",
+          "legendFormat": "RPS"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Error Rate",
+      "targets": [
+        {
+          "expr": "rate(app_error_count_total[5m]) / clamp_min(rate(app_request_count_total[5m]), 1e-9)",
+          "legendFormat": "Error Rate"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "CPU and GPU Utilization",
+      "targets": [
+        {
+          "expr": "app_cpu_utilization",
+          "legendFormat": "CPU"
+        },
+        {
+          "expr": "app_gpu_utilization",
+          "legendFormat": "GPU"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+environment: production
+service_name: realfake-face-detection
+service_version: 1.0.0
+model_name: real_fake_baseline
+active_model_version: 1.0.0
+
+prometheus_enabled: true
+grafana_enabled: true
+metrics_port: 9108
+health_check_interval_sec: 60
+latency_p95_threshold_ms: 300.0
+latency_p99_threshold_ms: 600.0
+error_rate_threshold: 0.05
+throughput_min_threshold: 2.0
+
+drift_monitor_enabled: true
+drift_check_interval_hours: 6
+feature_drift_threshold: 0.2
+prediction_drift_threshold: 0.15
+reference_window_days: 30
+
+alert_channels:
+  - type: webhook
+    target: https://alerts.example.com/realfake
+    severity_min: warning
+
+latency_spike_factor: 2.5
+model_collapse_ratio: 0.95
+model_collapse_window: 200
+save_health_history: true
+health_history_path: app/backend/outputs/ops/health/health_history.jsonl
+save_monitor_reports: true
+monitor_report_dir: app/backend/outputs/ops/monitoring

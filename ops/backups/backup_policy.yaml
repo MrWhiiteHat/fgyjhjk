@@ -1,0 +1,26 @@
+backup_root: ops/backups/archives
+
+sources:
+  - training/outputs/checkpoints
+  - training/outputs/reports
+  - dataset/metadata
+  - ops/mlops/state
+  - ops/logs
+
+include_files:
+  - ops/configs/ops_config.yaml
+  - ops/configs/mlops_config.yaml
+  - ops/configs/drift_config.yaml
+
+retention:
+  keep_daily: 7
+  keep_weekly: 4
+  keep_monthly: 6
+
+compression:
+  format: zip
+  level: 6
+
+integrity:
+  generate_manifest: true
+  verify_on_create: true

@@ -1,0 +1,16 @@
+security_hardening:
+  enabled: true
+  mode: strict
+  integrate_modules:
+    module4_inference: true
+    module5_backend_frontend: true
+    module6_monitoring_mlops: true
+    module8_cloud_controls: true
+    module9_lifecycle_retraining: true
+  defaults:
+    response_policy: standard
+    explanation_policy: standard
+    dry_run_for_new_rules: true
+  emergency_controls:
+    enable_emergency_disable: true
+    enable_fast_rollback: true

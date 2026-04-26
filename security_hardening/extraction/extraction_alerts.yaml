@@ -1,0 +1,19 @@
+extraction_alerts:
+  repeated_tiny_modifications:
+    severity: high
+    route: secops
+  rapid_threshold_exploration:
+    severity: high
+    route: secops
+  confidence_distribution_probing:
+    severity: high
+    route: secops
+  bulk_enumeration_behavior:
+    severity: critical
+    route: secops_pager
+  cadence_rate_spike:
+    severity: medium
+    route: abuse_monitor
+  cadence_too_regular:
+    severity: medium
+    route: abuse_monitor

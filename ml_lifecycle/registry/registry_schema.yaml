@@ -1,0 +1,15 @@
+registry_schema:
+  entity: model_version
+  required_fields:
+    - model_version
+    - training_dataset_id
+    - metrics
+    - created_at
+    - status
+    - artifact_uri
+  status_values:
+    - staging
+    - production
+    - archived
+  uniqueness:
+    - model_version

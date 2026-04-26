@@ -1,0 +1,34 @@
+app_name: RealFakeMobile
+app_version: 1.0.0
+model_name: real_fake_detector
+model_version: v1.0.0
+inference_mode: auto
+fallback_backend_enabled: true
+backend_base_url: http://127.0.0.1:8000
+default_threshold: 0.5
+local_model_path: edge/mobile/app/src/assets/models/real_fake_mobile.tflite
+input_size: [224, 224]
+normalization_mean: [0.485, 0.456, 0.406]
+normalization_std: [0.229, 0.224, 0.225]
+max_image_size_mb: 10
+max_video_size_mb: 150
+max_frames_per_video: 24
+frame_stride: 6
+aggregation_strategy: majority_vote
+explainability_enabled: true
+offline_history_enabled: true
+offline_queue_enabled: true
+sync_enabled: true
+sync_interval_sec: 60
+storage_quota_mb: 300
+allowed_image_extensions: [".jpg", ".jpeg", ".png", ".webp"]
+allowed_video_extensions: [".mp4", ".mov", ".mkv", ".webm"]
+extension_scan_limit: 0
+extension_auto_scan_enabled: false
+extension_overlay_enabled: false
+mobile_camera_fps_cap: 5
+low_power_mode: true
+quantized_model_enabled: true
+benchmark_enabled: true
+debug_logging: false
+privacy_mode: user_selectable

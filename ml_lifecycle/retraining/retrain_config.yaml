@@ -1,0 +1,13 @@
+retraining:
+  drift_trigger:
+    data_drift_score_threshold: 0.2
+    concept_confidence_shift_threshold: 0.1
+    concept_error_rate_delta_threshold: 0.05
+  time_trigger:
+    min_days_between_retrains: 7
+  feedback_trigger:
+    min_feedback_records: 50
+  validation:
+    min_class_ratio: 0.2
+    max_class_ratio: 0.8
+    min_samples: 100

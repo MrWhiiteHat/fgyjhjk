@@ -1,0 +1,64 @@
+groups:
+  - name: realfake_api_rules
+    rules:
+      - alert: RealFakeHighErrorRate
+        expr: (rate(app_errors_total[5m]) / clamp_min(rate(app_requests_total[5m]), 1e-9)) > 0.05
+        for: 10m
+        labels:
+          severity: critical
+          team: platform
+        annotations:
+          summary: "High API error rate"
+          description: "Error rate exceeded 5% over 10 minutes"
+
+      - alert: RealFakeLatencyP99High
+        expr: app_latency_p99_ms > 600
+        for: 5m
+        labels:
+          severity: warning
+          team: mlops
+        annotations:
+          summary: "P99 latency high"
+          description: "P99 response latency exceeded 600ms"
+
+      - alert: RealFakeLowThroughput
+        expr: rate(app_requests_total[5m]) < 0.03
+        for: 15m
+        labels:
+          severity: warning
+          team: platform
+        annotations:
+          summary: "Throughput dropped"
+          description: "Request throughput is lower than expected"
+
+  - name: realfake_model_rules
+    rules:
+      - alert: RealFakeFeatureDriftHigh
+        expr: app_drift_score_feature > 0.2
+        for: 10m
+        labels:
+          severity: warning
+          team: mlops
+        annotations:
+          summary: "Feature drift threshold exceeded"
+          description: "Feature drift score above configured threshold"
+
+      - alert: RealFakePredictionDriftHigh
+        expr: app_drift_score_prediction > 0.15
+        for: 10m
+        labels:
+          severity: critical
+          team: mlops
+        annotations:
+          summary: "Prediction drift threshold exceeded"
+          description: "Prediction distribution drift is outside safe bounds"
+
+      - alert: RealFakeModelClassCollapse
+        expr: app_model_class_collapse == 1
+        for: 5m
+        labels:
+          severity: critical
+          team: mlops
+        annotations:
+          summary: "Model class collapse detected"
+          description: "Model predictions are dominated by one class (>95%)"

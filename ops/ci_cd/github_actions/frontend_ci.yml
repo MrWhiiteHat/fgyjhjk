@@ -1,0 +1,43 @@
+name: frontend-ci
+
+on:
+  push:
+    paths:
+      - 'app/frontend/**'
+      - '.github/workflows/frontend_ci.yml'
+  pull_request:
+    paths:
+      - 'app/frontend/**'
+
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app/frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: app/frontend/package-lock.json
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+      - name: Lint (if available)
+        run: |
+          npm run lint --if-present
+
+      - name: Test (if available)
+        run: |
+          npm test --if-present
+
+      - name: Build (if available)
+        run: |
+          npm run build --if-present

@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: realfake-backend
+    runtime: docker
+    dockerfilePath: app/deployment/Dockerfile.backend
+    dockerContext: .
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_HOST
+        value: 0.0.0.0
+      - key: APP_PORT
+        value: 8000
+      - key: MODEL_PRELOAD_ON_STARTUP
+        value: "true"
+      - key: ENABLE_CORS
+        value: "true"
+      - key: CORS_ORIGINS
+        value: https://your-frontend-domain.vercel.app

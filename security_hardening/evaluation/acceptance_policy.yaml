@@ -1,0 +1,10 @@
+security_acceptance_policy:
+  robustness:
+    max_allowed_degradation: 0.12
+    min_perturbed_accuracy: 0.75
+  regression:
+    require_security_regression_pass: true
+  extraction_policy:
+    max_allowed_extraction_risk: 0.45
+  poisoning_policy:
+    require_poisoning_controls_configured: true

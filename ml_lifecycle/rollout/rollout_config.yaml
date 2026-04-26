@@ -1,0 +1,18 @@
+rollout:
+  shadow:
+    enabled: true
+    min_shadow_samples: 100
+  canary:
+    enabled: true
+    initial_traffic_percent: 5
+    max_traffic_percent: 50
+    step_percent: 10
+  ab_testing:
+    enabled: true
+    split:
+      control: 0.5
+      candidate: 0.5
+  rollback:
+    error_rate_spike_threshold: 0.05
+    latency_spike_ms_threshold: 40.0
+    metric_degradation_threshold: 0.02

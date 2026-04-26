@@ -1,0 +1,5 @@
+vulnerable_model_blocklist:
+  - "0.9.0"
+  - "1.0.1-vuln"
+  - "1.1.3-rc-insecure"
+  - "legacy-experimental-face-detector"

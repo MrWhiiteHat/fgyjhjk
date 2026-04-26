@@ -1,0 +1,19 @@
+api_limits:
+  image_endpoint:
+    max_size_mb: 12
+    max_files_per_request: 4
+  video_endpoint:
+    max_size_mb: 300
+    max_files_per_request: 1
+  bulk_endpoint:
+    max_files_per_request: 64
+    max_total_payload_mb: 400
+  archive:
+    max_size_mb: 350
+    max_members: 500
+    max_depth: 5
+    max_uncompressed_bytes: 2147483648
+  abuse_response:
+    throttle_risk_threshold: 0.45
+    quarantine_risk_threshold: 0.75
+    block_risk_threshold: 0.90

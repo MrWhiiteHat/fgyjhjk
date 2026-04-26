@@ -1,0 +1,17 @@
+sample_id,source_filepath,split,label,dataset,status,rejection_reason,detector,confidence,num_faces,bbox,landmarks,blur_score,brightness,face_hash,processing_ms,notes
+1263645564330769066,frames/fake/custom_custom_fake_fake_3_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,4766,No valid primary face detection
+3929543319629586195,frames/real/custom_custom_real_real_4_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,4767,No valid primary face detection
+4396878549751742240,frames/fake/custom_custom_fake_fake_2_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,4769,No valid primary face detection
+3441968126688186661,frames/real/custom_custom_real_real_7_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,4769,No valid primary face detection
+2814562773449854745,frames/fake/custom_custom_fake_fake_0_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,34,No valid primary face detection
+2823653272355778705,frames/fake/custom_custom_fake_fake_4_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,45,No valid primary face detection
+2444673772314028518,frames/fake/custom_custom_fake_fake_7_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,48,No valid primary face detection
+3909131913401439678,frames/real/custom_custom_real_real_5_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,49,No valid primary face detection
+3038228077027540138,frames/real/custom_custom_real_real_6_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,39,No valid primary face detection
+5946825780857861659,frames/real/custom_custom_real_real_2_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,45,No valid primary face detection
+4180832132775625954,frames/real/custom_custom_real_real_3_f000000.jpg,train,0,custom,rejected,no_face,,,0,,,,,,60,No valid primary face detection
+1959264718658435153,frames/fake/custom_custom_fake_fake_6_f000000.jpg,train,1,custom,rejected,no_face,,,0,,,,,,64,No valid primary face detection
+3274403379607288705,frames/fake/custom_custom_fake_fake_5_f000000.jpg,val,1,custom,rejected,no_face,,,0,,,,,,52,No valid primary face detection
+9113283382567575303,frames/real/custom_custom_real_real_0_f000000.jpg,val,0,custom,rejected,no_face,,,0,,,,,,49,No valid primary face detection
+8207976770959428656,frames/fake/custom_custom_fake_fake_1_f000000.jpg,test,1,custom,rejected,no_face,,,0,,,,,,49,No valid primary face detection
+3170451104306984833,frames/real/custom_custom_real_real_1_f000000.jpg,test,0,custom,rejected,no_face,,,0,,,,,,51,No valid primary face detection

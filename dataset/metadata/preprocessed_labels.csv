@@ -1,0 +1,17 @@
+sample_id,split,label,preprocessed_path
+real_0,train,0,dataset/preprocessed/train/real/real_0.jpg
+real_1,train,0,dataset/preprocessed/train/real/real_1.jpg
+real_2,train,0,dataset/preprocessed/train/real/real_2.jpg
+real_3,train,0,dataset/preprocessed/train/real/real_3.jpg
+real_4,train,0,dataset/preprocessed/train/real/real_4.jpg
+real_5,train,0,dataset/preprocessed/train/real/real_5.jpg
+real_6,train,0,dataset/preprocessed/train/real/real_6.jpg
+real_7,train,0,dataset/preprocessed/train/real/real_7.jpg
+fake_0,train,1,dataset/preprocessed/train/fake/fake_0.jpg
+fake_1,train,1,dataset/preprocessed/train/fake/fake_1.jpg
+fake_2,train,1,dataset/preprocessed/train/fake/fake_2.jpg
+fake_3,train,1,dataset/preprocessed/train/fake/fake_3.jpg
+fake_4,train,1,dataset/preprocessed/train/fake/fake_4.jpg
+fake_5,train,1,dataset/preprocessed/train/fake/fake_5.jpg
+fake_6,train,1,dataset/preprocessed/train/fake/fake_6.jpg
+fake_7,train,1,dataset/preprocessed/train/fake/fake_7.jpg

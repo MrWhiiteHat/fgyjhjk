@@ -1,0 +1,45 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment (staging|production)'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      model_version:
+        description: 'Model version to activate (optional)'
+        required: false
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pyyaml
+
+      - name: Deploy staging
+        if: inputs.environment == 'staging'
+        run: |
+          bash ops/ci_cd/scripts/deploy_staging.sh
+
+      - name: Deploy production
+        if: inputs.environment == 'production'
+        run: |
+          bash ops/ci_cd/scripts/deploy_production.sh "${{ inputs.model_version }}"

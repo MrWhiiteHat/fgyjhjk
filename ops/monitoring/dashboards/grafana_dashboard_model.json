@@ -1,0 +1,56 @@
+{
+  "title": "RealFake Model Monitoring",
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "Prediction Distribution",
+      "targets": [
+        {
+          "expr": "rate(app_prediction_count_real_total[5m])",
+          "legendFormat": "REAL"
+        },
+        {
+          "expr": "rate(app_prediction_count_fake_total[5m])",
+          "legendFormat": "FAKE"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "Feature Drift Score",
+      "targets": [
+        {
+          "expr": "app_drift_score_feature",
+          "legendFormat": "feature drift"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "Prediction Drift Score",
+      "targets": [
+        {
+          "expr": "app_drift_score_prediction",
+          "legendFormat": "prediction drift"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "Class Collapse Flag",
+      "targets": [
+        {
+          "expr": "app_model_class_collapse"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+acceptance_criteria:
+  minimum_accuracy: 0.85
+  max_accuracy_regression: 0.01
+  max_error_rate: 0.15
+  max_latency_ms: 120.0
+  max_bias_disparity_increase: 0.03
+  required_regression_tests_pass: true

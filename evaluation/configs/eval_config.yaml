@@ -1,0 +1,69 @@
+experiment_name: real_fake_eval_module4
+
+checkpoint_path: training/outputs/checkpoints/real_fake_baseline/best_model.pt
+exported_model_path: training/outputs/checkpoints/real_fake_baseline/exports/model_torchscript.pt
+use_torchscript: false
+use_onnx: false
+
+device: auto
+input_size: 224
+mean: [0.485, 0.456, 0.406]
+std: [0.229, 0.224, 0.225]
+num_classes: 2
+class_names: [REAL, FAKE]
+default_threshold: 0.50
+
+threshold_search_metric: f1
+enable_threshold_search: true
+threshold_search_min: 0.10
+threshold_search_max: 0.90
+threshold_search_step: 0.01
+threshold_search_recall_constraint: 0.90
+
+enable_temperature_scaling: true
+enable_calibration_metrics: true
+calibration_split: val
+calibration_bins: 15
+
+batch_size: 16
+num_workers: 0
+pin_memory: false
+amp_inference: false
+
+image_extensions: [.jpg, .jpeg, .png, .bmp, .webp]
+video_extensions: [.mp4, .avi, .mov, .mkv, .webm]
+
+save_prediction_csv: true
+save_prediction_json: true
+save_annotated_images: true
+save_video_output: true
+save_webcam_snapshots: false
+save_logits: true
+save_probabilities: true
+
+enable_gradcam: true
+enable_saliency: true
+explain_target_layer: backbone.layer4
+
+top_k_failure_cases: 25
+failure_case_sort_metric: wrong_confidence_desc
+
+output_dir: evaluation/outputs
+metadata_csv: dataset/metadata/preprocessed_labels.csv
+preprocessing_report_csv: dataset/metadata/preprocessing_report.csv
+val_dir: dataset/preprocessed/val
+test_dir: dataset/preprocessed/test
+
+webcam_index: 0
+video_fps_override: 0
+face_crop_required: false
+preprocessing_mode: resize
+center_crop_size: 224
+max_frames_per_video: 0
+frame_stride: 1
+per_frame_threshold: 0.50
+aggregate_video_strategy: mean_probability
+aggregate_video_min_fake_ratio: 0.35
+aggregation_window: 8
+
+log_level: INFO

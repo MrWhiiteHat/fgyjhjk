@@ -1,0 +1,16 @@
+poisoning_policy:
+  anomaly_filter:
+    burst_window_seconds: 120
+    burst_threshold: 25
+    low_quality_confidence_threshold: 0.35
+  label_consistency:
+    inconsistency_threshold: 0.40
+    improbable_flip_ratio_threshold: 0.70
+  retraining_guard:
+    max_suspicious_feedback_ratio: 0.30
+    max_class_skew: 0.75
+    max_anomaly_rate: 0.25
+    max_missing_provenance_rate: 0.10
+  quarantine:
+    enabled: true
+    min_records_for_batch_quarantine: 10

@@ -1,0 +1,35 @@
+input_frames_dir: dataset/frames
+labels_csv_path: dataset/metadata/labels.csv
+train_csv_path: dataset/metadata/train.csv
+val_csv_path: dataset/metadata/val.csv
+test_csv_path: dataset/metadata/test.csv
+output_face_crops_dir: dataset/face_crops
+output_preprocessed_dir: dataset/preprocessed
+output_landmarks_dir: dataset/face_landmarks
+rejected_dir: dataset/rejected
+preprocessed_labels_csv_path: dataset/metadata/preprocessed_labels.csv
+preprocessing_report_csv_path: dataset/metadata/preprocessing_report.csv
+rejected_samples_csv_path: dataset/metadata/rejected_samples.csv
+log_file_path: dataset/logs/preprocessing_pipeline.log
+
+image_size: [224, 224]
+face_detector: retinaface
+fallback_detector: mtcnn
+confidence_threshold: 0.90
+min_face_size: 40
+max_faces_allowed: 1
+blur_threshold: 80.0
+brightness_min: 40.0
+brightness_max: 220.0
+duplicate_hash_threshold: 4
+normalization_mean: [0.485, 0.456, 0.406]
+normalization_std: [0.229, 0.224, 0.225]
+num_workers: 4
+save_landmarks: true
+save_debug_images: true
+
+face_crop_margin_ratio: 0.20
+allowed_image_extensions: [".jpg", ".jpeg", ".png", ".bmp", ".webp"]
+allowed_video_extensions: [".mp4", ".avi", ".mov", ".mkv", ".webm"]
+random_seed: 42
+use_fp16_storage: false

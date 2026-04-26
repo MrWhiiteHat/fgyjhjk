@@ -1,0 +1,17 @@
+filepath,label,dataset
+frames/fake/custom_custom_fake_fake_0_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_1_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_2_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_3_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_4_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_5_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_6_f000000.jpg,1,custom
+frames/fake/custom_custom_fake_fake_7_f000000.jpg,1,custom
+frames/real/custom_custom_real_real_0_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_1_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_2_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_3_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_4_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_5_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_6_f000000.jpg,0,custom
+frames/real/custom_custom_real_real_7_f000000.jpg,0,custom

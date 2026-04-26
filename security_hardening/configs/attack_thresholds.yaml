@@ -1,0 +1,21 @@
+attack_thresholds:
+  input_guard:
+    repeated_corrupted_header_threshold: 3
+    extreme_aspect_ratio: 10.0
+  adversarial_precheck:
+    risk_warn_threshold: 0.45
+    risk_block_threshold: 0.80
+  perturbation:
+    gaussian_noise_threshold: 20.0
+    compression_artifact_threshold: 14.0
+    high_frequency_threshold: 0.35
+    localized_patch_threshold: 0.40
+  uncertainty_gate:
+    uncertainty_review_threshold: 0.75
+    uncertainty_suppress_threshold: 0.45
+  poisoning:
+    suspicious_feedback_ratio_block: 0.30
+    anomaly_rate_block: 0.25
+  extraction:
+    query_risk_warn: 0.45
+    query_risk_block: 0.75

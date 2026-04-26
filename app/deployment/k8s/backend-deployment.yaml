@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: realfake-backend
+  namespace: realfake
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: realfake-backend
+  template:
+    metadata:
+      labels:
+        app: realfake-backend
+    spec:
+      containers:
+        - name: backend
+          image: your-registry/realfake-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: realfake-config
+          env:
+            - name: MODEL_ARTIFACT_PATH
+              value: training/outputs/checkpoints/real_fake_baseline/best_model.pt
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: realfake-secrets
+                  key: API_KEY
+                  optional: true
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          volumeMounts:
+            - name: backend-outputs
+              mountPath: /workspace/app/backend/outputs
+            - name: backend-tmp
+              mountPath: /workspace/app/backend/tmp
+      volumes:
+        - name: backend-outputs
+          emptyDir: {}
+        - name: backend-tmp
+          emptyDir: {}

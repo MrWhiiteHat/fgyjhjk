@@ -1,0 +1,37 @@
+environment: production
+service_name: realfake-face-detection
+service_version: 1.0.0
+
+rate_limit_enabled: true
+rate_limit_per_minute: 120
+api_key_enabled: true
+allowed_origins:
+  - http://localhost:3000
+  - https://realfake.example.com
+max_upload_size_mb: 250
+
+audit_logging_enabled: true
+log_retention_days: 30
+log_redaction_enabled: true
+
+security_headers_enabled: true
+admin_roles:
+  - admin
+  - platform
+public_roles:
+  - public
+
+max_archive_members: 1000
+max_archive_depth: 4
+max_filename_length: 255
+reject_empty_uploads: true
+
+abuse_detection_enabled: true
+malformed_burst_threshold: 10
+oversize_attempt_threshold: 5
+burst_window_seconds: 120
+
+alert_channels:
+  - type: email
+    target: security-oncall@example.com
+    severity_min: warning

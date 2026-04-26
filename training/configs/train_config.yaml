@@ -1,0 +1,122 @@
+experiment_name: real_fake_baseline
+seed: 42
+device: auto
+
+train_dir: dataset/preprocessed/train
+val_dir: dataset/preprocessed/val
+test_dir: dataset/preprocessed/test
+metadata_csv: dataset/metadata/preprocessed_labels.csv
+
+num_classes: 2
+image_size: 224
+batch_size: 4
+num_workers: 4
+pin_memory: true
+persistent_workers: true
+
+backbone: resnet50
+pretrained: true
+freeze_backbone: false
+dropout: 0.2
+hidden_dim: 512
+
+epochs: 25
+optimizer: adamw
+learning_rate: 0.0003
+weight_decay: 0.0001
+optimizer_params:
+  momentum: 0.9
+  backbone_lr: 0.0001
+  head_lr: 0.0003
+
+scheduler: cosineannealinglr
+scheduler_params:
+  T_max: 10
+  eta_min: 0.000001
+
+loss_function: bce_with_logits
+class_weights: [1.0, 1.0]
+use_focal_loss: false
+label_smoothing: 0.0
+focal_params:
+  alpha: 0.25
+  gamma: 2.0
+
+use_amp: true
+gradient_accumulation_steps: 1
+gradient_clip_norm: 1.0
+
+early_stopping_patience: 5
+early_stopping_min_delta: 0.0
+monitor_metric: val_f1
+maximize_metric: true
+
+checkpoint_dir: training/outputs/checkpoints
+log_dir: training/outputs/logs
+plots_dir: training/outputs/plots
+report_dir: training/outputs/reports
+predictions_dir: training/outputs/predictions
+
+save_best_only: false
+save_last_checkpoint: true
+resume_from_checkpoint: ""
+
+threshold: 0.5
+threshold_sweep:
+  enabled: true
+  metric: f1
+  min: 0.10
+  max: 0.90
+  step: 0.02
+
+sampler:
+  use_weighted_sampler: true
+  replacement: true
+
+model_export:
+  enabled: true
+  export_torchscript: true
+  export_onnx: true
+
+train_augmentations:
+  policy: mild
+  resize: true
+  normalize: true
+  horizontal_flip:
+    enabled: true
+    p: 0.5
+  rotation:
+    enabled: true
+    degrees: 7
+  color_jitter:
+    enabled: true
+    brightness: 0.1
+    contrast: 0.1
+    saturation: 0.05
+    hue: 0.02
+  gaussian_blur:
+    enabled: false
+    kernel_size: 3
+    sigma: [0.1, 1.2]
+  jpeg_compression:
+    enabled: false
+    quality_min: 60
+    quality_max: 95
+
+val_augmentations:
+  policy: none
+  resize: true
+  normalize: true
+
+test_augmentations:
+  policy: none
+  resize: true
+  normalize: true
+
+normalization:
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+allowed_extensions:
+  image: [".jpg", ".jpeg", ".png", ".bmp", ".webp"]
+  array: [".npy"]

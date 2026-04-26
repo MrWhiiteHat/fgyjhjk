@@ -1,0 +1,6 @@
+# Optional detector backends for higher face-detection accuracy.
+# Install these if you want RetinaFace and MTCNN deep models enabled.
+# Base pipeline still runs with OpenCV Haar fallback when unavailable.
+
+retina-face>=0.0.17
+mtcnn>=0.1.1

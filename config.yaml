@@ -1,0 +1,82 @@
+paths:
+  root: dataset
+  raw:
+    faceforensics: dataset/raw/faceforensics
+    celebdf: dataset/raw/celebdf
+    dfdc: dataset/raw/dfdc
+    custom: dataset/raw/custom
+  processed:
+    real: dataset/processed/real
+    fake: dataset/processed/fake
+  frames:
+    real: dataset/frames/real
+    fake: dataset/frames/fake
+  metadata:
+    labels: dataset/metadata/labels.csv
+    train: dataset/metadata/train.csv
+    val: dataset/metadata/val.csv
+    test: dataset/metadata/test.csv
+  logs:
+    pipeline: dataset/logs/data_pipeline.log
+
+processing:
+  fps: 5
+  image_size: [224, 224]
+  frame_format: jpg
+  jpeg_quality: 95
+  deduplicate_frames: true
+
+split:
+  train: 0.70
+  val: 0.15
+  test: 0.15
+  random_seed: 42
+
+balancing:
+  method: oversample
+  apply_to: train
+
+download:
+  chunk_size_mb: 8
+  timeout_sec: 120
+  retries: 5
+  num_workers: 4
+  datasets:
+    faceforensics:
+      enabled: true
+      method: direct_or_manual
+      docs_url: https://github.com/ondyari/FaceForensics
+      urls: []
+      auth:
+        type: none
+        username: ""
+        password: ""
+        token: ""
+    celebdf:
+      enabled: true
+      method: kaggle_or_direct
+      docs_url: https://github.com/yuezunli/celeb-deepfakeforensics
+      kaggle:
+        dataset: "gauravduttakiit/celeb-df-v2"
+      urls: []
+      auth:
+        type: none
+        username: ""
+        password: ""
+        token: ""
+    dfdc:
+      enabled: true
+      method: kaggle_competition_or_direct
+      docs_url: https://www.kaggle.com/c/deepfake-detection-challenge
+      kaggle:
+        competition: deepfake-detection-challenge
+      urls: []
+      auth:
+        type: none
+        username: ""
+        password: ""
+        token: ""
+
+custom:
+  accepted_video_ext: [".mp4", ".avi", ".mov", ".mkv", ".webm"]
+  accepted_image_ext: [".jpg", ".jpeg", ".png", ".bmp", ".webp"]

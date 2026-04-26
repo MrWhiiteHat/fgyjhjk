@@ -1,0 +1,13 @@
+model_integrity:
+  strict_mode: true
+  checksum_required: true
+  signature_verification:
+    enabled: false
+    algorithm: hmac_sha256
+    secret_env_var: MODEL_SIGNATURE_SECRET
+  approved_versions:
+    - "1.0.0"
+    - "1.0.2"
+    - "1.1.0"
+  blocklist_file: security_hardening/model_security/vulnerable_model_blocklist.yaml
+  security_gate_required: true

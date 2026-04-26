@@ -1,0 +1,17 @@
+feedback_schema:
+  required_fields:
+    - feedback_id
+    - prediction_id
+    - model_version
+    - tenant_id
+    - submitted_at
+  optional_fields:
+    - corrected_label
+    - confidence
+    - comment
+    - metadata
+  queue_status_values:
+    - pending
+    - in_review
+    - resolved
+    - rejected

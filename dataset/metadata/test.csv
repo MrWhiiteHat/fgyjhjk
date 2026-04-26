@@ -1,0 +1,3 @@
+filepath,label,dataset
+frames/fake/custom_custom_fake_fake_1_f000000.jpg,1,custom
+frames/real/custom_custom_real_real_1_f000000.jpg,0,custom

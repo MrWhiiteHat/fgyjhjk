@@ -1,0 +1,19 @@
+level: INFO
+format: json
+
+console_enabled: true
+file_enabled: true
+
+log_dir: app/backend/outputs/logs
+file_name: app.log
+
+max_bytes: 10485760
+backup_count: 10
+
+redaction_enabled: true
+redaction_keys:
+  - api_key
+  - authorization
+  - token
+  - secret
+  - password

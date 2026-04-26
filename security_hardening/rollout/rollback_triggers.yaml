@@ -1,0 +1,12 @@
+rollback_triggers:
+  attack_surge:
+    enabled: true
+    threshold_events_per_window: 50
+    window_seconds: 300
+  artifact_integrity_failure:
+    enabled: true
+    immediate_rollback: true
+  post_release_robustness_collapse:
+    enabled: true
+    max_degradation_delta: 0.10
+    min_observations: 100

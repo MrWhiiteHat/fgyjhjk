@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "RealFake Edge",
+    "slug": "realfake-edge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b1c28"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.realfake.edge"
+    },
+    "android": {
+      "package": "com.realfake.edge",
+      "permissions": [
+        "CAMERA",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO"
+      ]
+    },
+    "plugins": [
+      "expo-camera",
+      "expo-image-picker"
+    ],
+    "extra": {
+      "backendBaseUrl": "http://127.0.0.1:8000",
+      "defaultInferenceMode": "auto"
+    }
+  }
+}
