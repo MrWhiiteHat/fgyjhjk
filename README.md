@@ -149,6 +149,7 @@ The platform includes automated scripts to download and format the following ind
 - **Rate Limiting**: Protect your API from abuse via configurable middleware.
 - **Telemetry**: Integrated Prometheus metrics for real-time monitoring.
 - **Dockerized**: Single-command deployment using `docker compose up --build`.
+- **Render Ready**: Complete Blueprint deployment configuration included. See the [Render Deployment Guide](RENDER_DEPLOYMENT_GUIDE.md) for step-by-step instructions.
 - **Hardened**: Production-grade Nginx reverse proxy configurations included.
 
 ---

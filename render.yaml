@@ -18,5 +18,20 @@ services:
         value: "true"
       - key: ENABLE_CORS
         value: "true"
+      # The frontend URL will be injected automatically if you connect them, or allow all in prod temporarily
       - key: CORS_ORIGINS
-        value: https://your-frontend-domain.vercel.app
+        value: "*"
+
+  - type: web
+    name: realfake-frontend
+    runtime: docker
+    dockerfilePath: app/deployment/Dockerfile.frontend
+    dockerContext: .
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        fromService:
+          type: web
+          name: realfake-backend
+          property: url
