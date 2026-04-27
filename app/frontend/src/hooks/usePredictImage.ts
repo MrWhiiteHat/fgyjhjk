@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { predictImage } from "@/lib/api";
 import { HookState, ImagePredictionData } from "@/lib/types";
@@ -16,6 +16,15 @@ export function usePredictImage() {
 
   const controllerRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+      controllerRef.current?.abort("component unmounted");
+    };
+  }, []);
 
   const run = useCallback(
     async (options: { file: File; threshold?: number; explain: boolean; generateReport: boolean }) => {

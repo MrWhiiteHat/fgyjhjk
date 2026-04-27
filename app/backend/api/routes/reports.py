@@ -82,10 +82,13 @@ def download_report_file(
             "txt": "text/plain",
             "csv": "text/csv",
         }[query.report_format]
+        short_id = report_id[:8] if len(report_id) > 8 else report_id
+        friendly_name = f"scan_report_{short_id}.{query.report_format}"
         return FileResponse(
             path=artifact,
             media_type=media_type,
-            filename=f"{report_id}.{query.report_format}",
+            filename=friendly_name,
+            content_disposition_type="attachment",
         )
     except AppBaseError:
         raise

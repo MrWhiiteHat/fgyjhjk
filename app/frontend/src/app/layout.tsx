@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-
-import { Navbar } from "@/components/Navbar";
+import { Sidebar } from "@/components/Sidebar";
+import { Topbar } from "@/components/Topbar";
 import { ToastProvider } from "@/components/ToastProvider";
+import { AuthProvider } from "@/components/AuthProvider";
+import { AppLayoutWrapper } from "@/components/AppLayoutWrapper";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
@@ -14,8 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }):
     <html lang="en">
       <body>
         <ToastProvider>
-          <Navbar />
-          <main className="mainContainer">{children}</main>
+          <AuthProvider>
+            <AppLayoutWrapper>
+              {children}
+            </AppLayoutWrapper>
+          </AuthProvider>
         </ToastProvider>
       </body>
     </html>

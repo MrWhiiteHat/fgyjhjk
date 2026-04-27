@@ -226,7 +226,13 @@ export default function PredictImagePage(): React.JSX.Element {
             <ul className="linkList">
               {Object.entries(prediction.data.data.report.files).map(([format, url]) => (
                 <li key={format}>
-                  <a href={url.startsWith("/") ? `${apiOrigin}${url}` : url} target="_blank" rel="noreferrer">
+                  <a
+                    href={url.startsWith("/") ? `${apiOrigin}${url}` : url}
+                    download={`scan_report.${format}`}
+                    className="linkButton"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Download {format.toUpperCase()}
                   </a>
                 </li>

@@ -185,17 +185,35 @@ export default function PredictVideoPage(): React.JSX.Element {
                 <h3>Report Download</h3>
                 <ul className="linkList">
                   <li>
-                    <a href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=json`} target="_blank" rel="noreferrer">
+                    <a
+                      href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=json`}
+                      download="scan_report.json"
+                      className="linkButton"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Download JSON
                     </a>
                   </li>
                   <li>
-                    <a href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=txt`} target="_blank" rel="noreferrer">
+                    <a
+                      href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=txt`}
+                      download="scan_report.txt"
+                      className="linkButton"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Download TXT
                     </a>
                   </li>
                   <li>
-                    <a href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=csv`} target="_blank" rel="noreferrer">
+                    <a
+                      href={`${apiOrigin}/api/v1/reports/${prediction.data.data.result.report_id}/download?format=csv`}
+                      download="scan_report.csv"
+                      className="linkButton"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Download CSV
                     </a>
                   </li>

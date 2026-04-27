@@ -15,7 +15,8 @@
 - **🖼️ Multi-Media Detection**: Seamlessly detect deepfakes in both high-resolution images and long-form videos.
 - **🔍 Explainable AI (XAI)**: Integrated **Grad-CAM** visualizations highlight exactly *why* the model flagged a specific region as "Fake".
 - **🚀 Production-Ready API**: High-performance FastAPI backend with rate-limiting, authentication, and async processing.
-- **📊 Interactive Dashboard**: Modern Next.js frontend with real-time prediction updates and detailed report generation.
+- **📊 Interactive Dashboard**: Modern Next.js frontend with a brand new clean, light-themed responsive design and seamless interactive experience.
+- **🔐 Secure Authentication**: Full JWT-based user authentication system with secure route protection and API communication.
 - **🛠️ Robust ML Pipeline**: Complete lifecycle support from data acquisition (FaceForensics++, Celeb-DF, DFDC) to model training and evaluation.
 - **📦 Edge & Deployment**: Optimized for cloud (Docker/K8s) and edge environments (Mobile/Browser Extensions).
 

@@ -19,6 +19,7 @@ export function useExplain() {
   const mountedRef = useRef(true);
 
   useEffect(() => {
+    mountedRef.current = true;
     return () => {
       mountedRef.current = false;
       controllerRef.current?.abort("component unmounted");

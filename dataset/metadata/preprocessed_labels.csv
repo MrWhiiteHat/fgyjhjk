@@ -7,6 +7,12 @@ real_4,train,0,dataset/preprocessed/train/real/real_4.jpg
 real_5,train,0,dataset/preprocessed/train/real/real_5.jpg
 real_6,train,0,dataset/preprocessed/train/real/real_6.jpg
 real_7,train,0,dataset/preprocessed/train/real/real_7.jpg
+train_real_c2,train,0,dataset/preprocessed/train/real/custom_custom_real_real_2_f000000.jpg
+train_real_c3,train,0,dataset/preprocessed/train/real/custom_custom_real_real_3_f000000.jpg
+train_real_c4,train,0,dataset/preprocessed/train/real/custom_custom_real_real_4_f000000.jpg
+train_real_c5,train,0,dataset/preprocessed/train/real/custom_custom_real_real_5_f000000.jpg
+train_real_c6,train,0,dataset/preprocessed/train/real/custom_custom_real_real_6_f000000.jpg
+train_real_c7,train,0,dataset/preprocessed/train/real/custom_custom_real_real_7_f000000.jpg
 fake_0,train,1,dataset/preprocessed/train/fake/fake_0.jpg
 fake_1,train,1,dataset/preprocessed/train/fake/fake_1.jpg
 fake_2,train,1,dataset/preprocessed/train/fake/fake_2.jpg
@@ -15,3 +21,13 @@ fake_4,train,1,dataset/preprocessed/train/fake/fake_4.jpg
 fake_5,train,1,dataset/preprocessed/train/fake/fake_5.jpg
 fake_6,train,1,dataset/preprocessed/train/fake/fake_6.jpg
 fake_7,train,1,dataset/preprocessed/train/fake/fake_7.jpg
+train_fake_c0,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_0_f000000.jpg
+train_fake_c2,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_2_f000000.jpg
+train_fake_c3,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_3_f000000.jpg
+train_fake_c4,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_4_f000000.jpg
+train_fake_c6,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_6_f000000.jpg
+train_fake_c7,train,1,dataset/preprocessed/train/fake/custom_custom_fake_fake_7_f000000.jpg
+val_real_c0,val,0,dataset/preprocessed/val/real/custom_custom_real_real_0_f000000.jpg
+val_fake_c5,val,1,dataset/preprocessed/val/fake/custom_custom_fake_fake_5_f000000.jpg
+test_real_c1,test,0,dataset/preprocessed/test/real/custom_custom_real_real_1_f000000.jpg
+test_fake_c1,test,1,dataset/preprocessed/test/fake/custom_custom_fake_fake_1_f000000.jpg

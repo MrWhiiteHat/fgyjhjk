@@ -147,8 +147,9 @@ class FaceBinaryDataset(Dataset):
 
             path = Path(raw_path)
             if not path.is_absolute():
-                if str(path).startswith("dataset/"):
-                    path = Path(path)
+                path_str = path.as_posix()
+                if path_str.startswith("dataset/"):
+                    path = Path(path_str)
                 else:
                     path = Path("dataset") / path
 

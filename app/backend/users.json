@@ -1,0 +1,17 @@
+{
+    "test@test.com": {
+        "email": "test@test.com",
+        "full_name": "Test User",
+        "hashed_password": "$2b$12$5/eEH0LK7h8G4An7q9L9EOhkcZ3q9UZjG/VsdtIC0O5I/TLjFVFoq"
+    },
+    "white@123gmail.com": {
+        "email": "white@123gmail.com",
+        "full_name": "white",
+        "hashed_password": "$2b$12$W1Ll983fhU10KRtkPW7..ujdkrLHLb8TRVHmMexNqUK5yMoLIUPpC"
+    },
+    "admin@realfake.com": {
+        "email": "admin@realfake.com",
+        "full_name": "Admin User",
+        "hashed_password": "$2b$12$d9wq0J9LS0wU.3Mn1PaRFOD5SSy2rIcwfeXYV7phznoyuIltH88au"
+    }
+}

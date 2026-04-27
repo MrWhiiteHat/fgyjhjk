@@ -26,11 +26,17 @@ export function ReportDownloadCard({ report }: ReportDownloadCardProps): React.J
 
   return (
     <section className="card" aria-label="Report download links">
-      <h3>Report {report.report_id}</h3>
+      <h3>Report {report.report_id.slice(0, 8)}</h3>
       <ul className="linkList">
         {Object.entries(report.files).map(([format, path]) => (
           <li key={format}>
-            <a href={resolveUrl(path)} target="_blank" rel="noreferrer">
+            <a
+              href={resolveUrl(path)}
+              download={`scan_report.${format}`}
+              className="linkButton"
+              target="_blank"
+              rel="noreferrer"
+            >
               {format.toUpperCase()} file
             </a>
           </li>

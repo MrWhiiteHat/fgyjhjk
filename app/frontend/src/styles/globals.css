@@ -1,23 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
 
 :root {
-  --bg: #09121f;
-  --bg-2: #111f33;
-  --panel: rgba(17, 29, 45, 0.9);
-  --panel-soft: rgba(21, 36, 57, 0.8);
-  --line: rgba(126, 162, 199, 0.22);
-  --text: #eaf4ff;
-  --muted: #a1bbd4;
-  --primary: #19e0b5;
-  --primary-2: #22b7ff;
-  --primary-dark: #13b38f;
-  --danger-bg: rgba(255, 93, 117, 0.12);
-  --danger-text: #ffc5cf;
-  --shadow: 0 22px 48px rgba(0, 0, 0, 0.32);
-  --risk-low: #56d18a;
-  --risk-medium: #f5bd52;
-  --risk-high: #ff6f62;
-  --risk-uncertain: #88a7ff;
+  --bg: #F4F6F8;
+  --bg-2: #FFFFFF;
+  --panel: #FFFFFF;
+  --panel-soft: #F9FAFB;
+  --line: #E5E7EB;
+  --text: #1F2937;
+  --muted: #6B7280;
+  --primary: #1D6643;
+  --primary-2: #248154;
+  --primary-dark: #144930;
+  --primary-light: #E8F5E9;
+  --danger-bg: #FEE2E2;
+  --danger-text: #DC2626;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --risk-low: #10B981;
+  --risk-medium: #F59E0B;
+  --risk-high: #EF4444;
+  --risk-uncertain: #6366F1;
 }
 
 * {
@@ -33,15 +34,26 @@ body {
 body {
   font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 8% 10%, rgba(25, 224, 181, 0.18), transparent 34%),
-    radial-gradient(circle at 88% 6%, rgba(34, 183, 255, 0.2), transparent 40%),
-    linear-gradient(165deg, var(--bg), #07111d 52%, var(--bg-2));
+  background: var(--bg);
   min-height: 100vh;
 }
 
 a {
   color: #9be8ff;
+}
+
+.sidebar {
+  width: 260px;
+  background: #FFFFFF;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .navbar {
@@ -112,11 +124,30 @@ a {
 .card,
 .resultCard,
 .statCard {
-  background: linear-gradient(180deg, rgba(22, 35, 55, 0.92), var(--panel));
+  background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 16px;
   box-shadow: var(--shadow);
-  padding: 1rem;
+  padding: 1.5rem;
+}
+
+.statCard.primary {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: #FFFFFF;
+}
+
+.statCard.primary .statLabel,
+.statCard.primary .statTrend {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.statCard.primary .statValue {
+  color: #FFFFFF;
+}
+
+.statCard.primary .statIcon {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
 }
 
 .heroCard {
@@ -204,17 +235,17 @@ a {
 
 .formGrid label {
   font-weight: 600;
-  color: #dbebff;
+  color: var(--text);
 }
 
 .formGrid input,
 .formGrid select {
   width: 100%;
-  border: 1px solid rgba(126, 162, 199, 0.32);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 0.58rem 0.65rem;
+  padding: 0.65rem 0.8rem;
   font: inherit;
-  background: rgba(9, 18, 31, 0.7);
+  background: var(--panel-soft);
   color: var(--text);
 }
 
@@ -259,20 +290,25 @@ a {
 }
 
 .primaryButton {
-  background: linear-gradient(115deg, var(--primary), var(--primary-2));
-  color: #001019;
-  box-shadow: 0 10px 22px rgba(25, 224, 181, 0.2);
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(29, 102, 67, 0.2);
 }
 
 .primaryButton:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 16px 28px rgba(25, 224, 181, 0.22);
+  box-shadow: 0 6px 16px rgba(29, 102, 67, 0.3);
+  background: var(--primary-dark);
 }
 
 .secondaryButton {
-  background: rgba(11, 22, 36, 0.86);
-  border-color: rgba(126, 162, 199, 0.4);
+  background: #FFFFFF;
+  border-color: var(--line);
   color: var(--text);
+}
+
+.secondaryButton:hover:not(:disabled) {
+  background: var(--panel-soft);
 }
 
 .primaryButton:disabled,
@@ -420,6 +456,32 @@ a {
   padding-left: 1rem;
   display: grid;
   gap: 0.45rem;
+}
+
+.sidebarLinks .navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  justify-content: flex-start;
+  width: 100%;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sidebarLinks .navLink:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sidebarLinks .navLinkActive {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .riskBadge {
@@ -592,4 +654,416 @@ a {
     transform: translateY(0);
     opacity: 1;
   }
+}
+/* Layout Framework */
+.appLayout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 260px;
+  background: #FFFFFF;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebarBrand {
+  font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.sidebarSection {
+  margin-bottom: 2rem;
+}
+
+.sidebarLabel {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.sidebarLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.sidebarLinks .navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  justify-content: flex-start;
+  width: 100%;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.sidebarLinks .navLink:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.sidebarLinks .navLinkActive {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.sidebarLinks .navLink span {
+  font-size: 1.1rem;
+}
+
+.mainWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  height: 80px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F3F4F6;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  width: 320px;
+  transition: all 0.2s;
+}
+
+.searchBar:focus-within {
+  background: #FFFFFF;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(29, 102, 67, 0.1);
+}
+
+.searchBar input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  padding: 0;
+}
+
+.topbarActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.iconBtn:hover {
+  color: var(--text);
+  transform: scale(1.1);
+}
+
+.statTrend span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.statCard.primary .statTrend span {
+  background: #FFFFFF;
+  color: var(--primary);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.userProfile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userInfo .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.userInfo .role {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Dashboard Page Specific */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.pageTitle h1 {
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.pageTitle p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboardMain {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dashboardBottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.chartContainer {
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.chartBar {
+  width: 40px;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chartBar.active {
+  background: var(--primary);
+}
+
+.chartBar.secondary {
+  background: var(--primary-light);
+}
+
+.chartBar.striped {
+  background: repeating-linear-gradient(
+    45deg,
+    #e5e7eb,
+    #e5e7eb 5px,
+    #ffffff 5px,
+    #ffffff 10px
+  );
+}
+
+.chartLabel {
+  position: absolute;
+  bottom: -25px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.historyIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.historyDetails {
+  flex: 1;
+}
+
+.historyItem {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.historyItem:last-child {
+  border-bottom: none;
+}
+
+.donutChart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donutValue {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+}
+
+.donutLabel {
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+.donutLegend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legendDot.primary {
+  background: var(--primary);
+}
+
+.legendDot.secondary {
+  background: var(--line);
+}
+
+.darkPanel {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.darkPanel h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: left;
+}
+
+.darkPanelValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: "Space Grotesk", sans-serif;
+  margin: 1rem 0;
+}
+
+.iconBtn.timerBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.2rem;
 }
