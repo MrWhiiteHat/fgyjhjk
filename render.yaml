@@ -18,9 +18,8 @@ services:
         value: "true"
       - key: ENABLE_CORS
         value: "true"
-      # The frontend URL will be injected automatically if you connect them, or allow all in prod temporarily
       - key: CORS_ORIGINS
-        value: "*"
+        value: "https://realfake-frontend.onrender.com"
 
   - type: web
     name: realfake-frontend
@@ -31,7 +30,4 @@ services:
     autoDeploy: true
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        fromService:
-          type: web
-          name: realfake-backend
-          property: url
+        value: "https://realfake-backend.onrender.com"
