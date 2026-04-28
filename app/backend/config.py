@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     DEBUG: bool = True
     LOG_LEVEL: str = "INFO"
 
-    MODEL_ARTIFACT_PATH: str = "training/outputs/checkpoints/real_fake_baseline/best_model.pt"
+    MODEL_ARTIFACT_PATH: str = "app/backend/models/best_model.pt"
     MODEL_TYPE: str = "pytorch"
     DEVICE: str = "auto"
     MODEL_PRELOAD_ON_STARTUP: bool = True
@@ -48,7 +48,7 @@ class Settings(BaseSettings):
     ENABLE_EXPLAINABILITY: bool = True
     ENABLE_REPORT_EXPORT: bool = True
     ENABLE_CORS: bool = True
-    CORS_ORIGINS: List[str] = Field(default_factory=lambda: ["http://localhost:3000"])
+    CORS_ORIGINS: List[str] = Field(default_factory=lambda: ["*"])
 
     REQUEST_TIMEOUT_SEC: int = 60
     PREDICTION_CACHE_TTL: int = 300
