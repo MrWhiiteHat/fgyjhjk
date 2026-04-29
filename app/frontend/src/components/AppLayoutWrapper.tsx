@@ -3,9 +3,10 @@
 import { usePathname } from "next/navigation";
 import { Sidebar } from "@/components/Sidebar";
 import { Topbar } from "@/components/Topbar";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 export function AppLayoutWrapper({ children }: { children: ReactNode }): React.JSX.Element {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
   const isAuthPage = pathname === "/login" || pathname === "/signup";
 
@@ -19,9 +20,9 @@ export function AppLayoutWrapper({ children }: { children: ReactNode }): React.J
 
   return (
     <div className="appLayout">
-      <Sidebar />
-      <div className="mainWrapper">
-        <Topbar />
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
+      <div className={`mainWrapper ${isSidebarOpen ? "sidebarOpen" : ""}`}>
+        <Topbar toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
         <main className="mainContainer">{children}</main>
       </div>
     </div>

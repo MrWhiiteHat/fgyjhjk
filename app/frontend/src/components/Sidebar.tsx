@@ -17,15 +17,27 @@ const generalLinks = [
   { href: "#", label: "Help", icon: "❓" }
 ];
 
-export function Sidebar(): React.JSX.Element {
+export function Sidebar({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: boolean) => void }): React.JSX.Element {
   const pathname = usePathname();
   const { logout } = useAuth();
 
   return (
-    <aside className="sidebar">
-      <div className="sidebarBrand">
-        <span>🛡️</span> RealFake
-      </div>
+    <>
+      {/* Overlay for mobile when sidebar is open */}
+      <div 
+        className={`sidebarOverlay ${isOpen ? "open" : ""}`} 
+        onClick={() => setIsOpen(false)} 
+      />
+      
+      <aside className={`sidebar ${isOpen ? "open" : "closed"}`}>
+        <div className="sidebarHeader">
+          <div className="sidebarBrand">
+            <span>🛡️</span> RealFake
+          </div>
+          <button className="closeSidebarBtn iconBtn" onClick={() => setIsOpen(false)}>
+            ✕
+          </button>
+        </div>
 
       <div className="sidebarSection">
         <div className="sidebarLabel">Menu</div>
@@ -68,5 +80,6 @@ export function Sidebar(): React.JSX.Element {
       </div>
 
     </aside>
+    </>
   );
 }

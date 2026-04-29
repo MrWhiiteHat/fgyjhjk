@@ -2,14 +2,19 @@
 
 import { useAuth } from "@/components/AuthProvider";
 
-export function Topbar(): React.JSX.Element {
+export function Topbar({ toggleSidebar }: { toggleSidebar: () => void }): React.JSX.Element {
   const { user } = useAuth();
 
   return (
     <header className="topbar">
-      <div className="searchBar">
-        <span style={{ color: "var(--muted)" }}>🔍</span>
-        <input type="text" placeholder="Search scan..." />
+      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+        <button className="iconBtn" onClick={toggleSidebar} style={{ fontSize: "1.5rem" }}>
+          ☰
+        </button>
+        <div className="searchBar">
+          <span style={{ color: "var(--muted)" }}>🔍</span>
+          <input type="text" placeholder="Search scan..." />
+        </div>
       </div>
 
       <div className="topbarActions">
