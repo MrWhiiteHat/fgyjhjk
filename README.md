@@ -26,9 +26,8 @@
 
 ```mermaid
 graph TD
-    User([User]) <--> Frontend[Next.js Dashboard]
-    Frontend <--> Gateway[Nginx / API Gateway]
-    Gateway <--> Backend[FastAPI Inference Service]
+    User([User]) <--> Frontend[Next.js Dashboard - Vercel]
+    Frontend <--> Backend[FastAPI Inference - Hugging Face Space]
     
     subgraph "Inference Engine"
         Backend --> ModelService[Model Service]
@@ -148,9 +147,9 @@ The platform includes automated scripts to download and format the following ind
 
 - **Rate Limiting**: Protect your API from abuse via configurable middleware.
 - **Telemetry**: Integrated Prometheus metrics for real-time monitoring.
-- **Dockerized**: Single-command deployment using `docker compose up --build`.
-- **Render Ready**: Complete Blueprint deployment configuration included. See the [Render Deployment Guide](RENDER_DEPLOYMENT_GUIDE.md) for step-by-step instructions.
-- **Hardened**: Production-grade Nginx reverse proxy configurations included.
+- **Dockerized**: Backend deployed as a custom Docker Space on **Hugging Face Spaces**.
+- **Model Delivery**: Lazy-loading architecture fetching 295MB model artifacts dynamically from GitHub Releases at build-time to bypass upload constraints.
+- **Frontend Edge**: Lightning-fast UI deployed on **Vercel** with full CORS and JWT integration to the Hugging Face backend.
 
 ---
 
