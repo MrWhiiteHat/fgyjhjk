@@ -17,7 +17,13 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /app/backend/requirements.txt && \
     pip install --no-cache-dir gunicorn uvicorn
 
+# Copy backend code
 COPY . /app/backend/
+
+# Copy evaluation and training to root so Python can import them
+# (they are uploaded to the HF Space repo alongside the backend files)
+RUN if [ -d /app/backend/evaluation ]; then cp -r /app/backend/evaluation /evaluation; fi
+RUN if [ -d /app/backend/training ]; then cp -r /app/backend/training /training; fi
 
 # Create necessary directories
 RUN mkdir -p /app/backend/tmp /app/backend/outputs
