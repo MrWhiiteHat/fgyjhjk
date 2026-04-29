@@ -52,7 +52,7 @@ class DummyFileService:
 
 
 class DummyInferenceService:
-    def predict_image_file(self, image_path: str, threshold: float | None = None, file_digest: str | None = None):
+    def predict_image_with_timeout(self, image_path: str, threshold: float | None = None, file_digest: str | None = None):
         _ = image_path
         _ = file_digest
         return {
@@ -94,10 +94,9 @@ class DummyInferenceService:
             "report_id": report_id,
         }
 
-
 class DummyExplainabilityService:
-    def explain_image(self, image_path: str, explanation_type: str = "both", target_layer: str | None = None):
-        _ = (image_path, explanation_type, target_layer)
+    def explain_image(self, image_path: str, explanation_type: str = "both", target_layer: str | None = None, **kwargs):
+        _ = (image_path, explanation_type, target_layer, kwargs)
         return {
             "explanation_type": "both",
             "target_layer": "layer4",
@@ -133,8 +132,8 @@ class DummyModelService:
 
 
 class FailingExplainabilityService:
-    def explain_image(self, image_path: str, explanation_type: str = "both", target_layer: str | None = None):
-        _ = (image_path, explanation_type, target_layer)
+    def explain_image(self, image_path: str, explanation_type: str = "both", target_layer: str | None = None, **kwargs):
+        _ = (image_path, explanation_type, target_layer, kwargs)
         raise ExplainabilityError("Explainability failed for sample")
 
 

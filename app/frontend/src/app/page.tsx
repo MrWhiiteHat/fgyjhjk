@@ -64,9 +64,9 @@ export default function DashboardPage(): React.JSX.Element {
     return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
   };
 
-  const fakeCount = history.items.filter(i => i.result.decision === "FAKE").length;
-  const realCount = history.items.filter(i => i.result.decision === "REAL").length;
-  const pendingCount = history.items.filter(i => i.result.decision === "UNCERTAIN").length;
+  const fakeCount = history.items.filter(i => i.result.final_decision === "FAKE").length;
+  const realCount = history.items.filter(i => i.result.final_decision === "REAL").length;
+  const pendingCount = history.items.filter(i => i.result.uncertain_prediction).length;
 
   return (
     <>
@@ -190,10 +190,10 @@ export default function DashboardPage(): React.JSX.Element {
               {history.items.slice(0, 4).map((item) => (
                 <li key={item.id} className="historyItem">
                   <div className="historyIcon" style={{ 
-                    background: item.result.decision === "FAKE" ? "var(--danger-bg)" : item.result.decision === "REAL" ? "#dcfce7" : "#dbeafe",
-                    color: item.result.decision === "FAKE" ? "var(--risk-high)" : item.result.decision === "REAL" ? "var(--risk-low)" : "var(--risk-uncertain)"
+                    background: item.result.uncertain_prediction ? "#dbeafe" : item.result.final_decision === "FAKE" ? "var(--danger-bg)" : "#dcfce7",
+                    color: item.result.uncertain_prediction ? "var(--risk-uncertain)" : item.result.final_decision === "FAKE" ? "var(--risk-high)" : "var(--risk-low)"
                   }}>
-                    {item.result.decision === "FAKE" ? "⚠️" : item.result.decision === "REAL" ? "✅" : "❓"}
+                    {item.result.uncertain_prediction ? "❓" : item.result.final_decision === "FAKE" ? "⚠️" : "✅"}
                   </div>
                   <div className="historyDetails">
                     <p className="historyTitle">Scan ID: {item.id.substring(0, 8)}</p>
@@ -201,7 +201,7 @@ export default function DashboardPage(): React.JSX.Element {
                   </div>
                   <div className="historyStats">
                     <span className={`riskBadge risk-${item.result.risk_level.toLowerCase()}`}>
-                      {item.result.decision}
+                      {item.result.uncertain_prediction ? "UNCERTAIN" : item.result.final_decision}
                     </span>
                   </div>
                 </li>

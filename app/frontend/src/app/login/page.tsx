@@ -92,7 +92,7 @@ export default function LoginPage(): React.JSX.Element {
 
       <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
         <p className="muted">
-          Don't have an account? <Link href="/signup" style={{ color: "var(--primary)", fontWeight: "600" }}>Sign up</Link>
+          Don&apos;t have an account? <Link href="/signup" style={{ color: "var(--primary)", fontWeight: "600" }}>Sign up</Link>
         </p>
       </div>
     </div>
